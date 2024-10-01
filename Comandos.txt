@@ -1,0 +1,81 @@
+-- IONIC INTRODUCCIÓN
+
+Install the Ionic CLI
+$ npm install -g @ionic/cli
+
+Si hubo una instalación previa de Ionic CLI, será necesario desinstalarlo debido a un cambio en el nombre del paquete.
+$ npm uninstall -g ionic
+$ npm install -g @ionic/cli
+
+Creamos nuestra primera app con IONIC
+$ ionic start myApp blank --capacitor --type=angular
+
+Ejecutamos nuestra primera App con Ionic:
+$ cd myApp, Para acceder al directorio creado.
+$ ionic serve, Ejecutamos el simulador.
+
+Prueba tu App en tu móvil… Códigos del profesor
+$ ionic build, Con ello estas creando tu proyecto www. Observa que en tu proyecto aparece dicha carpeta www.
+$ ionic capacitor add Android, Se crea la carpeta “Android” con el proyecto Android.
+$ ionic capacitor open android,  Con este comando se abrirá el Android Studio con tu proyecto
+
+Probablemente tenga que escribir este código en Android/gradle.properties para que pueda funcionar en Android studio y no de errores.
+android.overridePathCheck=true //Esto desactiva la verificación de la ruta
+
+Códigos de https://ionicframework.com/ Estos comandos se puede decir que hacen lo mismo que los anteriores pero de manera más directa
+$ ionic capacitor build 
+$ ionic capacitor build android
+$ ionic capacitor build ios
+
+Guardar cambios o actualizaciones en el código fuente de mi proyecto
+$ ionic build, Con ello estas actualizando el contenido de tu proyecto en la carpeta www.
+$ ionic cap copy, Se copian los cambios a las diferentes plataformas. En este caso a Android.
+$ ionic cap sync, Con este comando se sincronizarán los proyectos de las diferentes plataformas. En nuestro caso para que lo puedas ver desde el Android Studio.
+
+-- EXPRESS + SEQUELIZE INTRODUCCIÓN
+
+Creamos un directorio para nuestro backend e iniciamos un proyecto con node
+$ npm init
+
+Instalamos ahora el paquete Express que me permitirá crear los end-points de mi API.
+$ npm install express
+
+Crea el fichero index.js y copia el siguiente código:
+const express = require("express");
+
+const app = express();
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true}));
+
+db.sequelize.sync();
+
+// db.sequelize.sync({ force: true}).then(() => {
+//   console.log("Drop and re-sync db");
+// })
+
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bycicles application"})
+})
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+})
+
+Arrancamos nuestra API 
+$ node index.js
+
+Ahora vamos a por el ORM… En este caso se ha usado SEQUELIZE
+
+Instalamos los paquetes de sequelize y de mysql2
+$ npm install sequelize mysql2
+
+Puedes instalar varios paquetes a la vez. Aquí hemos instalado sequelize y mysql2 a la vez. 
+Sequelize es el ORM. 
+Mysql2 es para utilizar mysql.
+
+
+
+
